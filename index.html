@@ -9,14 +9,14 @@
             <style>
                 #myMap {position: absolute; top: 0; bottom: 0; left: 0; right:0;}
           </style>
-    
+
         <!--jQuery UI files-->
             <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
             <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
         <!--jQuery UI Touch js, required for touchscreen use-->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
             <script src="js/SliderControl.js"></script>
-            <link rel="stylesheet" href= "textbox.css" />  
+            <link rel="stylesheet" href= "textbox.css" />
 	    <link rel="stylesheet" href="leaflet-sidebar.css" />
 	  <script src="js/leaflet-sidebar.js"></script>
 	  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -51,18 +51,18 @@
                 <li><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
                 <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
             </ul>
-        <!-- add more tab panes here, copy / paste -->   
+        <!-- add more tab panes here, copy / paste -->
         </div>
 
         <!-- Tab panes -->
         <div class="leaflet-sidebar-content">
             <div class="leaflet-sidebar-pane" id="home">
                 <h1 class="leaflet-sidebar-header">
-                    Covid's Closing Door 
+                    Covid's Closing Door
                     <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
 
-                
+
 
                 <p class="lorem">During the Michigan’s lockdown responses to COVID-19 pandemic, beginning on March 16, 2020 Lansing foodservice workers and business owners have faced many challenges, including: health concerns, shutdowns, restricted hours, occupancy limits, poor delivery infrastructure, economic slowdowns, supply-chain issues, and customer hesitancy. Dozens of businesses in the Greater Lansing area have closed permanently or temporarily during the pandemic (Kaminski and Stocken 2020), as Michigan’s foodservice industry faced record financial losses during the months-long dine-in ban and capacity restrictions (Couch and Greco 2020).</p>
 
@@ -93,22 +93,22 @@
         </div>
     </div>
 
-    <div id="myMap" class="sidebar-map"></div> 
-	   
+    <div id="myMap" class="sidebar-map"></div>
+
         <script>
             var map1 = L.map ('myMap', {
 		    	minZoom: 7.5,
                         maxZoom: 18,
 		    zoomControl: false}).setView([43.59743364839015, -84.75832298140293], 7.5);
-           
+
             L.tileLayer('https://api.mapbox.com/styles/v1/jacob-cara-e/clacpjey6001d15plh9fpo29x/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFjb2ItY2FyYS1lIiwiYSI6ImNsYWNvdG1ybzBjaTgzcHBlczU3aTI1MHQifQ.H9XbnFnyjJeYBfQxiDL4-Q', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
            }).addTo(map1);
 		        map1.attributionControl.addAttribution('CHI Fellows 2022-2023, <a href="https://chi.anthropology.msu.edu/", class="your_class">CHI MSU 2022</a>');
-	  
-           
-                var dataset1 = [
-     
+
+
+var dataset1 = [
+
      {
          type: 'Feature',
          geometry: {
@@ -128,7 +128,7 @@
                          }
          }
      },
- 
+
      {
          type: 'Feature',
          geometry: {
@@ -146,11 +146,11 @@
                              popupAnchor: [0, -41],
                              className: 'dot',
                          }
- 
- 
+
+
          }
      },
-             
+
      {
          type: 'Feature',
          geometry: {
@@ -170,7 +170,7 @@
                          }
          }
      },
-     
+
      {
          type: 'Feature',
          geometry: {
@@ -190,9 +190,30 @@
                          }
          }
      }
- 
- 
- ];
+
+
+];
+
+var dataset2 = [
+];
+
+var dataset3 = [
+];
+
+var dataset4 = [
+];
+
+var dataset5 = [
+];
+
+var dataset6 = [
+];
+
+var dataset7 = [
+
+];
+
+//INCONGRUITIES w. Acme example
             var optionsObject = {
                 onEachFeature: onEachFeature
             };
@@ -201,24 +222,45 @@
                layer.setIcon(L.icon(feature.properties.icon));
                 layer.bindPopup(content, {closeButton: true});
             };
-            var group1 = L.geoJSON(dataset1, optionsObject);
+            // Create geoJSON layers
+			         var group1 = L.geoJSON(dataset1, optionsObject);
+			         var group2 = L.geoJSON(dataset2, optionsObject);
+			         var group3 = L.geoJSON(dataset3, optionsObject);
+			         var group4 = L.geoJSON(dataset4, optionsObject);
+			         var group5 = L.geoJSON(dataset5, optionsObject);
+			         var group6 = L.geoJSON(dataset6, optionsObject);
+			         var group7 = L.geoJSON(dataset7, optionsObject);
+
+            // Set the time attribute for each group
+            			group1.options.time = "2022/05";
+                  group2.options.time = "2022/06";
+            			group3.options.time = "2022/07";
+            			group4.options.time = "2022/08";
+            			group5.options.time = "2022/09";
+            			group6.options.time = "2022/10";
+            			group7.options.time = "2022/11";
+
+            // Create the layerGroup
+                        var multiLayers = L.layerGroup([group1, group2, group3, group4, group5, group6, group7]);
+
+            // Set the sliderControl options
             var sliderControl1 = L.control.sliderControl( {
-    layer: group1, // REQUIRED
-    alwaysShowDate: true, // to make the date box below the slider persistent
-    showAllPopups: false, // to show all popups, instead of only one; same as the popup option "autoClose: false"
-    showPopups: false // to set it so, when a marker is generated by the slider, its popup doesn't automatically display
+              layer: multiLayers, // REQUIRED
+              alwaysShowDate: true, // to make the date box below the slider persistent
+              showAllPopups: false, // to show all popups, instead of only one; same as the popup option "autoClose: false"
+              showPopups: false // to set it so, when a marker is generated by the slider, its popup doesn't automatically display
 });
-            
+
     // Add the slider to the map
 map1.addControl(sliderControl1);
 
 // Initialize the slider
 sliderControl1.startSlider();
-                
+
 var sidebar = L.control.sidebar({ container: 'sidebar' })
             .addTo(map1)
             .open('home');
-		
+
  // add panels dynamically to the sidebar
         sidebar
             .addPanel({
@@ -227,8 +269,8 @@ var sidebar = L.control.sidebar({ container: 'sidebar' })
                 title: 'JS API',
                 pane: '<p>The Javascript API allows to dynamically create or modify the panel state.<p/><p><button onclick="sidebar.enablePanel(\'mail\')">enable mails panel</button><button onclick="sidebar.disablePanel(\'mail\')">disable mails panel</button></p><p><button onclick="addUser()">add user</button></b>',
             })
-                        
-            
+
+
 	var userid = 0
         function addUser() {
             sidebar.addPanel({
@@ -240,14 +282,12 @@ var sidebar = L.control.sidebar({ container: 'sidebar' })
         }
 
 var zoom_bar = new L.Control.ZoomBar({position: 'topright'}).addTo(map1);
-       
 
- 
+
+
 	   </script>
-	   
 
-		
+
+
 	</body>
 </html>
-	   
-
