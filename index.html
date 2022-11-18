@@ -37,7 +37,7 @@
             padding: 0;
             margin: 0;
         }
- 
+
         img.resize {
                 max-width:80%;
                 max-height:80%;
@@ -49,21 +49,21 @@
         margin-right: auto;
         width: 50%;
         }
-                
-        .mapboxgl-popup {
+            
+         
+	    .mapboxgl-popup {
         min-width: 70%;
-                
-        }
+		}
 
         .mapboxgl-popup-content {
-        text-align: left;
+        text-align: center;
         font-family: 'Open Sans', sans-serif;
-            max-width: 300%;
-            
+        min-width: 70%;
         }
 
     </style>
-        </head>
+    </head>
+
    <body>
         <div id="myMap"</div>
 	<div id="sidebar" class="leaflet-sidebar collapsed">
@@ -140,7 +140,7 @@ var dataset1 = [
       },
       properties: {
           title: 'Detroit March',
-          description: '<img class="resize center" src="img/ProRoe.png"> <b>Location: Detroit</b> <br> On May 3, over one hundred people gathered in Detroit, Michigan to protest the overturn of the 1973 Roe v. Wade court ruling. Read more <a href="https://www.clickondetroit.com/news/politics/2022/05/04/100-rally-in-detroit-to-advocate-for-abortion-rights-following-leaked-scotus-opinion/">here</a>!',
+          description: '<img style="resize center" src="img/ProRoe.png"> <b>Location: Detroit</b> <br> On May 3, over one hundred people gathered in Detroit, Michigan to protest the overturn of the 1973 Roe v. Wade court ruling. Read more <a href="https://www.clickondetroit.com/news/politics/2022/05/04/100-rally-in-detroit-to-advocate-for-abortion-rights-following-leaked-scotus-opinion/">here</a>!',
           time: '2022/05',
         icon: {
               iconUrl: 'img/ProRoe.png',
