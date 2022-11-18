@@ -1,6 +1,9 @@
 
 <html lang="en">
     <head>
+          <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+          <link rel="stylesheet" href="assets/css/Auto-Modal-Popup.css">
+          <link rel="stylesheet" href="assets/css/Footer-Dark.css">
         <!--jquery js-->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <!-- leaflet files -->
@@ -17,12 +20,12 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
             <script src="js/SliderControl.js"></script>
             <link rel="stylesheet" href= "textbox.css" />
-	        <link rel="stylesheet" href="leaflet-sidebar.css" />
-	        <script src="js/leaflet-sidebar.js"></script>
-	        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-	        <link rel="stylesheet" type="text/css" href="L.Control.ZoomBar.css"/>
-	        <script type="text/javascript" src="js/L.Control.ZoomBar.js"></script>
-            <style>
+
+	  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	  <link rel="stylesheet" type="text/css" href="L.Control.ZoomBar.css"/>
+	  <script type="text/javascript" src="js/L.Control.ZoomBar.js"></script>
+    <style>
+
                 .lorem {
             font-style: normal;
             color: #000000;
@@ -33,78 +36,82 @@
                 font: 14pt "Helvetica Neue", Arial, Helvetica, sans-serif;
             }
 
-            body {
-                padding: 0;
-                margin: 0;
-            }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        img.resize {
+                max-width:80%;
+                max-height:80%;
+                  }
+
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        }
+
+        .mapboxgl-popup {
+        min-width: 70%;
+
+        }
+
+        .mapboxgl-popup-content {
+        text-align: left;
+        font-family: 'Open Sans', sans-serif;
+            max-width: 300%;
+
+        }
 
     </style>
-    </head>
+        </head>
+        <body style="color: rgb(39, 34, 38);min-height: 100%;">
+            <div class="modal fade" role="dialog" tabindex="-1" id="contactModal">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Welcome to the Michigan Demonstratio Map!</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    <p>TEXT HERE<br></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-   <body>
-        <div id="myMap"</div>
-	<div id="sidebar" class="leaflet-sidebar collapsed">
-        <!-- Nav tabs -->
-        <div class="leaflet-sidebar-tabs">
-            <ul role="tablist">
-                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-                <li><a href="#profile" role="tab"><i class="fa fa-bookmark"></i></a></li>
-                <li><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
-                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-            </ul>
-        </div>
-
-        <!-- Tab panes -->
-        <div class="leaflet-sidebar-content">
-            <div class="leaflet-sidebar-pane" id="home">
-                <h1 class="leaflet-sidebar-header">
-                    Covid's Closing Door
-                    <span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span>
-                </h1>
-
-
-
-                <p class="lorem">During the Michigan’s lockdown responses to COVID-19 pandemic, beginning on March 16, 2020 Lansing foodservice workers and business owners have faced many challenges, including: health concerns, shutdowns, restricted hours, occupancy limits, poor delivery infrastructure, economic slowdowns, supply-chain issues, and customer hesitancy. Dozens of businesses in the Greater Lansing area have closed permanently or temporarily during the pandemic (Kaminski and Stocken 2020), as Michigan’s foodservice industry faced record financial losses during the months-long dine-in ban and capacity restrictions (Couch and Greco 2020).</p>
-
-                <p class="lorem">Indeed, a survey of Michigan restaurants in April 2020 indicated that nearly four-percent would have to permanently close within the month. Hardest hit were businesses without large savings (Couch and Greco 2020) or established delivery or drive-through services (Couch 2020). Occasionally community members organized support for local businesses, but these were rare, feel good stories in a narrative defined by sale deficits of 50 - 75% where pandemic restrictions were exacerbated by mass unemployment and significant changes in work routines (Couch 2020; Greco 2020).</p>
-
-                <p class="lorem">This map includes Lansing area 15 restaurants, bars, and coffee shops that closed permanently during the pandemic, from March 2020 - August 2021. While each business faced unique circumstances that prompted their closings, all were connected to the broader narrative of the impacts of the pandemic on the foodservice industry in Michigan.</p>
-
-                <p class="lorem">Use the slider in the top right corner of the map to visualize when each business closed, some went out of business in the first weeks of the lockdown, while others stuck it out for months. Click on any of the 15 businesses to read about their specific circumstances derived from owner interviews and official social media posts. In this narrative, the voices of non-owner foodservice workers are missing and was not something broadly accessible at this time.</p>
             </div>
-
-            <div class="leaflet-sidebar-pane" id="profile">
-                <h1 class="leaflet-sidebar-header">References<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-		  <br>
-		  <li>Couch, Graham (2020) Inside the Lansing-area restaurant industry's fight to survive. <i>Lansing State Journal</i>, July 13, 2020. <a href="https://www.lansingstatejournal.com/story/sports/columnists/graham-couch/2020/05/07/lansing-area-restaurants-fight-to-survive-couch-column/3069370001/" target="_blank">Source</a> </li>
-		  <li>Greco, Rachel (2020) Coronavirus stripped Groovy Donuts of its momentum. Then the community stepped in. <i>Lansing State Journal</i>, May 12, 2020 <a href="https://www.lansingstatejournal.com/story/news/local/2020/05/13/coronavirus-stripped-groovy-donuts-its-momentum-then-community-stepped-in-east-lansing-williamston/3076751001/" target="_blank">Source</a> </li>
-		  <li>Greco, Rachel and Graham Couch (2020) Restaurants that have closed - or are on the edge: For some in Lansing area, COVID-19 was too much. <i>Lansing State Journal</i>, May 28, 2020 <a href="https://www.lansingstatejournal.com/story/news/local/2020/05/27/restaurants-that-have-closed-permanently-in-lansing-mid-michigan-covid-19/5231525002/" target="_blank">Source</a></li>
-		  <li>Kaminski, Kyle and Shauna Stocken (2020) At least 70 businesses gone or paused. <i>City Pulse</i>, May 28, 2020 <a href="https://lansingcitypulse.com/stories/at-least-70-businesses-gone-or-paused,14931" target="_blank">Source</a></li>
+            <div class="row">
+                <div class="col">
+                    <div class="container">
+                        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav" style="background: rgb(39, 34, 38);">
+                            <div class="container"><a class="navbar-brand" href="index.html" style="color: rgb(204, 187, 68);">Michigan Demonstration Map</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="background: rgb(233, 200, 121);"><i class="fa fa-bars"></i></button>
+                                <div class="collapse navbar-collapse" id="navbarResponsive">
+                                    <ul class="navbar-nav ms-auto text-uppercase">
+                                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
             </div>
+            <div class="container" style="min-width: 100%;max-width: 100%;height: 100%;width: 100%;padding: 0px;min-height: 100%;margin: 0px;max-height: 100%;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;margin-left: 0px;padding-top: 45px;padding-right: 1px;padding-bottom: 1px;padding-left: 1px;"><div id="myMap">ERROR.</div>
+            <script>
+                var map1 = L.map ('myMap', {
+                    minZoom: 7.5,
+                            maxZoom: 18,
+                zoomControl: false}).setView([43.59743364839015, -84.75832298140293], 7.5);
 
-            <div class="leaflet-sidebar-pane" id="messages">
-                <h1 class="leaflet-sidebar-header">Messages<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-		    <p><b><a class="one" href="mailto:fadat85580@nefacility.com" target="_blank">Contact Us!</a></b></p>
-            </div>
-
-            <div class="leaflet-sidebar-pane" id="settings">
-                <h1 class="leaflet-sidebar-header">Settings<span class="leaflet-sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-            </div>
-        </div>
-    </div>
-
-    <div id="myMap" class="sidebar-map"></div>
-
-        <script>
-            var map1 = L.map ('myMap', {
-		    	minZoom: 7.5,
-                        maxZoom: 18,
-		    zoomControl: false}).setView([43.59743364839015, -84.75832298140293], 7.5);
-
-            L.tileLayer('https://api.mapbox.com/styles/v1/jacob-cara-e/clacpjey6001d15plh9fpo29x/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFjb2ItY2FyYS1lIiwiYSI6ImNsYWNvdG1ybzBjaTgzcHBlczU3aTI1MHQifQ.H9XbnFnyjJeYBfQxiDL4-Q', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-           }).addTo(map1);
-		        map1.attributionControl.addAttribution('CHI Fellows 2022-2023, <a href="https://chi.anthropology.msu.edu/", class="your_class">CHI MSU 2022</a>');
+                L.tileLayer('https://api.mapbox.com/styles/v1/jacob-cara-e/clacpjey6001d15plh9fpo29x/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiamFjb2ItY2FyYS1lIiwiYSI6ImNsYWNvdG1ybzBjaTgzcHBlczU3aTI1MHQifQ.H9XbnFnyjJeYBfQxiDL4-Q', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               }).addTo(map1);
+                    map1.attributionControl.addAttribution('CHI Fellows 2022-2023, <a href="https://chi.anthropology.msu.edu/", class="your_class">CHI MSU 2022</a>');
 
 //May
 var dataset1 = [
@@ -1395,7 +1402,8 @@ var dataset7 = [
               layer: multiLayers, // REQUIRED
               alwaysShowDate: true, // to make the date box below the slider persistent
               showAllPopups: false, // to show all popups, instead of only one; same as the popup option "autoClose: false"
-              showPopups: false // to set it so, when a marker is generated by the slider, its popup doesn't automatically display
+              showPopups: false, // to set it so, when a marker is generated by the slider, its popup doesn't automatically display
+              position: 'bottomleft'
 });
 
     // Add the slider to the map
@@ -1403,19 +1411,6 @@ map1.addControl(sliderControl1);
 
 // Initialize the slider
 sliderControl1.startSlider();
-
-var sidebar = L.control.sidebar({ container: 'sidebar' })
-            .addTo(map1)
-            .open('home');
-
- // add panels dynamically to the sidebar
-        sidebar
-            .addPanel({
-                id:   'js-api',
-                tab:  '<i class="fa fa-users"></i>',
-                title: 'JS API',
-                pane: '<p>The Javascript API allows to dynamically create or modify the panel state.<p/><p><button onclick="sidebar.enablePanel(\'mail\')">enable mails panel</button><button onclick="sidebar.disablePanel(\'mail\')">disable mails panel</button></p><p><button onclick="addUser()">add user</button></b>',
-            })
 
 
 	var userid = 0
@@ -1428,7 +1423,7 @@ var sidebar = L.control.sidebar({ container: 'sidebar' })
             });
         }
 
-var zoom_bar = new L.Control.ZoomBar({position: 'topright'}).addTo(map1);
+var zoom_bar = new L.Control.ZoomBar({position: 'bottomright'}).addTo(map1);
 
 
 
